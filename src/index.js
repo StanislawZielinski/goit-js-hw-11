@@ -3,7 +3,7 @@ const form = document.querySelector('#search-form');
 import Notiflix from 'notiflix';
 form.addEventListener("submit", handleSubmit);
 const gallery = document.querySelector(".gallery");
-
+let markup = "";
 const API_KEY ='28203095-60f45d0309e92efa731dcf20a';
 
 function handleSubmit(event) {
@@ -37,13 +37,13 @@ function renderData(data) {
   console.log(data.hits);
   if (data.total === 0) {
     Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
-    const markup = "";
+    markup = "";
     gallery.innerHTML = markup;
   } else {
       markup = data.hits
         .map((hit) => {
           return `<div class="photo-card">
-            <img src="${hit.previewURL}" alt="${hit.tags}" loading="lazy" />
+            <img class="photo" src="${hit.previewURL}" alt="${hit.tags}" loading="lazy" />
             <div class="info">
               <p class="info-item">
                 <b>Likes ${hit.likes}</b>
