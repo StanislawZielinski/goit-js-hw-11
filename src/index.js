@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 form.addEventListener("submit", handleSubmit);
 let gallery = document.querySelector(".gallery");
 let lightBox = new SimpleLightbox('.gallery a');
+let markup = "";
 
 const loadMore = document.querySelector(".load-more");
 loadMore.style.visibility = "hidden";
