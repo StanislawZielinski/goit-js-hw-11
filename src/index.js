@@ -17,7 +17,7 @@ function handleSubmit(event) {
   const {
     elements: { searchQuery, button }
   } = event.currentTarget;
-  searchQueryValue = searchQuery.value
+  let searchQueryValue = searchQuery.value
   pageNr = 1;
   gallery.innerHTML = "";
   if (searchQueryValue.trim() === '') {
