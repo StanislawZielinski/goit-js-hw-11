@@ -4,7 +4,7 @@ form.addEventListener("submit", handleSubmit);
 let gallery = document.querySelector(".gallery");
 let lightBox = new SimpleLightbox('.gallery a');
 let markup = "";
-
+let searchQueryValue = "";
 const loadMore = document.querySelector(".load-more");
 loadMore.style.visibility = "hidden";
 import SimpleLightbox from 'simplelightbox';
@@ -15,10 +15,11 @@ let pageNr = 1;
 
 function handleSubmit(event) {
   event.preventDefault();
+  loadMore.disabled = false;
   const {
     elements: { searchQuery, button }
   } = event.currentTarget;
-  let searchQueryValue = searchQuery.value
+  searchQueryValue = searchQuery.value
   pageNr = 1;
   gallery.innerHTML = "";
   if (searchQueryValue.trim() === '') {
@@ -92,10 +93,11 @@ function loadMoreImg(event) {
 };
 
 function checkTotalHits(totalHits, pageNr) {
-  if (totalHits - pageNr * 40 < 0) {
-    Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+  if (totalHits - pageNr * 40 <= 0) {
+    loadMore.addEventListener("click",Notiflix.Notify.info("We're sorry, but you've reached the end of search results."))
   };  
 };
+
 function scroll() {
   const { height: cardHeight } = document
     .querySelector('.gallery')
