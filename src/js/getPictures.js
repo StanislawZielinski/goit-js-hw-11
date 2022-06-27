@@ -13,7 +13,7 @@ const searchParams = new URLSearchParams(
     }
 );  
 
-response = await axios({
+let response = await axios({
     method: 'get',
     url: `https://pixabay.com/api/?${searchParams}`,
 });
